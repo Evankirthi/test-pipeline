@@ -38,7 +38,7 @@ pipeline{
         }
         stage('Deploy') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '', passwordVariable: 'm3fw.CKrJMMP~c~nRGkhwYYkc8~4JG7dpr', usernameVariable: 'eb035e9a-fab9-4a1e-93c9-6e6135c654ec')]) {
+                withCredentials(credentialsId: 'azure-key') {
                     sh 'az login --service-principal -u jenkins_admin -p admin@123! -t 6fecd065-cb31-41b4-985c-60f2fdf1720f'
                     sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
                     sh 'az acr login --name $CONTAINER_REGISTRY --resource-group $RESOURCE_GROUP'
