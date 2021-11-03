@@ -14,6 +14,7 @@ pipeline{
             steps{
                 script{
                     echo 'Inside install packages'
+                     sh "npm install -g yarn"
                     sh "yarn install"
                 }
             }
