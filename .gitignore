@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# misc
+.DS_Store
+
+
+yarn-debug.log*
+yarn-error.log*
+
+.cache
+
+.idea
