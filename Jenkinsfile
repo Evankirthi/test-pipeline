@@ -3,11 +3,11 @@ pipeline{
       environment {
          AZURE_SUBSCRIPTION_ID='4d2182ac-c521-4061-88a1-79628a1ac2a8'
          AZURE_TENANT_ID='6fecd065-cb31-41b4-985c-60f2fdf1720f'
-         CONTAINER_REGISTRY='demoacr0427'
+         CONTAINER_REGISTRY='demoacr0427.azurecr.io'
          RESOURCE_GROUP='rg-acr'
          REPO="turbo-frontend-service"
          IMAGE_NAME="turbo_frontend"
-         TAG="tag"
+         TAG="v1"
      }
      stages{
         stage("Install packages"){
