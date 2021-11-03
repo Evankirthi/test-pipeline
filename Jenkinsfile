@@ -1,7 +1,6 @@
 pipeline{
-     agent {
-    docker { image 'node:8.11' }
-}
+     agent any
+     tools {nodejs "nodejs"}
       environment {
          AZURE_SUBSCRIPTION_ID='4d2182ac-c521-4061-88a1-79628a1ac2a8'
          AZURE_TENANT_ID='6fecd065-cb31-41b4-985c-60f2fdf1720f'
