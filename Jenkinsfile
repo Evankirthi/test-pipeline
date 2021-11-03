@@ -38,12 +38,12 @@ pipeline{
         }
         stage('Deploy') {
             steps {
-                withCredentials(credentialsId: 'azure-key') {
-                    sh 'az login --service-principal -u jenkins_admin -p admin@123! -t 6fecd065-cb31-41b4-985c-60f2fdf1720f'
-                    sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
-                    sh 'az acr login --name $CONTAINER_REGISTRY --resource-group $RESOURCE_GROUP'
-                    sh 'az acr build --image $REPO/$IMAGE_NAME:$TAG --registry $CONTAINER_REGISTRY --file Dockerfile . '
-                }
+                 withCredentials([azureServicePrincipal('azure-key')]) {
+                            sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                            sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
+                            sh 'az acr login --name $CONTAINER_REGISTRY --resource-group $RESOURCE_GROUP'
+                            sh 'az acr build --image $REPO/$IMAGE_NAME:$TAG --registry $CONTAINER_REGISTRY --file Dockerfile . '
+                        }
             }
         }
      }
